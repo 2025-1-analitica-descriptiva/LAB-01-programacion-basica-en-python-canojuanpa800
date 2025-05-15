@@ -4,7 +4,26 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
+def get_lines():
+    lines = []
+    with open("files\input\data.csv","r",encoding="utf-8") as file:
+        lines = file.readlines()
+    return lines
 
+def get_third_column(lines)-> list:
+    return [line.strip().split()[2] for line in lines]
+
+def get_month(sequence):
+    return [date.split("-")[1] for date in sequence]
+
+def reducer(sequence):
+    """Reducer"""
+    counter = dict()
+    for key in sequence:
+        if key not in counter:
+            counter[key] = 0
+        counter[key] += 1
+    return list(counter.items())
 
 def pregunta_04():
     """
@@ -26,3 +45,9 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    lines = get_lines()
+    dates = get_third_column(lines)
+    months = get_month(dates)
+    ans =  reducer(months)
+    return sorted(ans)
+# print(pregunta_04())
