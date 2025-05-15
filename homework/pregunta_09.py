@@ -7,7 +7,7 @@ utilizar pandas, numpy o scipy.
 
 def get_lines():
     lines = []
-    with open("files\input\data.csv","r",encoding="utf-8") as file:
+    with open("./files/input/data.csv","r",encoding="utf-8") as file:
         lines = file.readlines()
     return lines
 
@@ -60,4 +60,4 @@ def pregunta_09():
     mapped = mapper(sorted(cadenas))
     ans = reducer(mapped)
     return ans
-# print(pregunta_09())
+print(pregunta_09())
